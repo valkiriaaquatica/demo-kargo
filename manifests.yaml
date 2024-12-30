@@ -25,7 +25,7 @@ spec:
         app: deployment1
     spec:
       containers:
-      - image: ghcr.io/valkiriaaquatica/nginx:0.0.1
+      - image: ghcr.io/valkiriaaquatica/nginx:0.0.2
         imagePullPolicy: IfNotPresent
         name: deployment1
       imagePullSecrets: null
