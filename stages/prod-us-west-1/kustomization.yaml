@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ./resources/resources.yaml  # resources jsut let in  same direcotry
+
+helmGlobals:
+  chartHome: ../../charts
+
+helmCharts:
+- name: helm-chart-own # helm chart folder name
+  releaseName: kargo-ownapp-dev
+  valuesFile: ./values.yaml
+  # valuesFile: ../../charts/helm-chart-own/values.yaml # as resources it cant be

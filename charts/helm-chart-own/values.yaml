@@ -1,0 +1,21 @@
+deployment1:
+  enabled: true
+  name: deployment1
+  replicaCount: 1
+  image:
+    repository: ghcr.io/valkiriaaquatica/nginx
+    tag: "placeholder" 
+    pullPolicy: IfNotPresent
+  labels:
+    app: deployment1
+
+deployment2:
+  enabled: true
+  name: deployment2
+  replicaCount: 1
+  image:
+    repository: ghcr.io/valkiriaaquatica/nginx2
+    tag: "placeholder" 
+    pullPolicy: IfNotPresent
+  labels:
+    app: deployment1

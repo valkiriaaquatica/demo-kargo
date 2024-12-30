@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kargo-ownapp-test  # this is compose of the kargo project name + enviroment
+  namespace: argocd
+  annotations:
+    kargo.akuity.io/authorized-stage: kargo-ownapp:test  # this is needed as tells Kargo this app should be handled
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/valkiriaaquatica/kargo-apps.git
+    path: .
+    targetRevision: stage/test  # this is the BRANCH that creates Kargo to handle the environment, dont delete it
+  destination:
+    server: https://kubernetes.default.svc  # the cluster where the app will be deployed
+    namespace: kargo-ownapp-test
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - ApplyOutOfSyncOnly=true
