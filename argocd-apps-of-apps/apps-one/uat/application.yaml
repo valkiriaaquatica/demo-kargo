@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/valkiriaaquatica/kargo-apps.git
+    repoURL: https://github.com/valkiriaaquatica/demo-kargo.git
     path: .
     targetRevision: stage/uat  # this is the BRANCH that creates Kargo to handle the environment, dont delete it
   destination:
