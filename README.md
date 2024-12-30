@@ -101,5 +101,8 @@ The deployment utilizes two simple **Nginx images** stored in my **GitHub Packag
    ```bash
    kubectl apply -f argocd-apps-of-apps/application.yaml
    ```
+To check documentation in general for Kargo check:
+- https://docs.kargo.io/references/promotion-steps
+- https://docs.akuity.io/tutorials/kargo-quickstart/
 ---
 

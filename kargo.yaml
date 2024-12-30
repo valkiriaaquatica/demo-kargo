@@ -11,18 +11,18 @@ spec:
   # prod is handled manually
 
 --- # in case you GitHub repo or ANY repo is private 
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#   name: github-credentials
-#   namespace: kargo-ownapp
-#   labels:
-#     kargo.akuity.io/cred-type: git
-# stringData:
-#   username: username
-#   password: a_token
-#   repoURL: url
-# ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: github-credentials
+  namespace: kargo-ownapp
+  labels:
+    kargo.akuity.io/cred-type: git
+stringData:
+  username: a_name
+  password: a_token
+  repoURL: your_repo_url
+---
 
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
@@ -281,7 +281,7 @@ spec:
     spec:
       vars:
       - name: gitopsRepo
-        value: "https://github.com/valkiriaaquatica/kargo-apps.git"
+        value: "https://github.com/valkiriaaquatica/demo-kargo.git"
       - name: imageRepo1
         value: ghcr.io/valkiriaaquatica/nginx
       - name: imageRepo2
@@ -340,20 +340,10 @@ spec:
           provider: github
           repoURL:  ${{ vars.gitopsRepo }}
           prNumber: ${{ outputs['open-pr'].prNumber }}
-      # - uses: git-commit
-      #   as: commit
-      #   config:
-      #     path: ${{ vars.outPath }}
-      #     messageFromSteps:
-      #     - update-images
-      # - uses: git-push
-      #   config:
-      #     path: ${{ vars.outPath }}
       - uses: argocd-update
         config:
           apps:
           - name: kargo-ownapp-${{ ctx.stage }}
             sources:
             - repoURL: ${{ vars.gitopsRepo }}
-              # desiredRevision: ${{ outputs.commit.commit }}
               desiredRevision: ${{ outputs['wait-for-pr'].commit }}
