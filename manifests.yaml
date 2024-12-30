@@ -8,6 +8,16 @@ stringData:
   key: i_am_kaney_west
 type: Opaque
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  name: example-secret-2
+stringData:
+  key: i_am_kaney_west
+type: Opaque
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
