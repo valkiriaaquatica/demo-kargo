@@ -19,9 +19,9 @@ metadata:
   labels:
     kargo.akuity.io/cred-type: git
 stringData:
-  username: a_name
-  password: a_token
-  repoURL: your_repo_url
+  username: valkiriaaquatica
+  password: test
+  repoURL: https://github.com/valkiriaaquatica/demo-kargo.git
 ---
 
 apiVersion: kargo.akuity.io/v1alpha1

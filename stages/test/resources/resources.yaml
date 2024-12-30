@@ -7,3 +7,13 @@ metadata:
 type: Opaque
 stringData:
   key: "i_am_kaney_west"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: example-secret-2
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+type: Opaque
+stringData:
+  key: "i_am_kaney_west"
